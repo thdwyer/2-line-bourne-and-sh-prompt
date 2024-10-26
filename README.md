@@ -16,13 +16,11 @@ combining to get the result I wanted.
 
 The resulting prompt looks like this:
 
-┌─Fri Oct 25 19:14:31 WD:[~]
-└──tdwyer@XPS17 ▬▶ $
+![2LinePrompt](https://github.com/user-attachments/assets/fa1eaf6c-aa63-43e8-9070-531c5f2773e5)
 
 The bottom line changes if you are in a SSH session and looks like this:
 
-┌─Fri Oct 25 19:16:37 WD:[~]
-└──tdwyer@[xps17]▬▶charon ▬▶ $
+![2LinePromptWithSSH](https://github.com/user-attachments/assets/25e236d6-973d-4cd5-a337-187d897e7004)
 
 With the host the SSH session originated from in square brackets on the left and the host logged
 into on the right without brackets.  Colours are used effectively so the remote host stands out.
