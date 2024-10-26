@@ -1,0 +1,15 @@
+ssh_host () {
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+      client=$(echo $SSH_CLIENT | cut -d " " -f 1)
+      srchst=$(host $client | head -1 | awk '{print $NF}' | head -c-2)
+      epicfail=$(echo "$srchst" | grep "NXDOMAIN" | cut -d "(" -f 2)
+      if [ "$epicfail" == "NXDOMAIN" ] ; then
+         echo "${LTGREEN}[${client}]${YELLOW}▬▶${LTWHITE}$(hostname)"
+      else
+         echo "${LTGREEN}[${srchst}]${YELLOW}▬▶${LTWHITE}$(hostname)"
+      fi
+   else
+      echo $(hostname)
+   fi
+}
+export PS1="${YELLOW}\n┌─\[${LTRED}\]\d ${LTBLUE}\t \[${LTCYAN}\]WD:\[${YELLOW}\][\w]\n└──\[${LTGREEN}\]\u\[${YELLOW}\]@$(ssh_host)\[${RESET}\] ▬▶ \$ "
